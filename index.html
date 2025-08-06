@@ -2233,16 +2233,12 @@
             statusDiv.style.color = '#92400e';
             statusDiv.textContent = 'Sending to Zapier...';
             
-            const payload = {
-                prompt: promptText
-            };
-            
             fetch('https://hooks.zapier.com/hooks/catch/19713185/u4w2uc2/', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'text/plain',
                 },
-                body: JSON.stringify(payload)
+                body: promptText
             })
             .then(response => {
                 if (response.ok) {
