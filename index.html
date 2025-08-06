@@ -2233,12 +2233,22 @@
             statusDiv.style.color = '#92400e';
             statusDiv.textContent = 'Sending to Zapier...';
             
+            const payload = {
+                model: "claude-4-sonnet-20250514",
+                project_id: "0198723c-3695-77e7-abed-90cbe6e95538",
+                max_tokens: 4000,
+                messages: [{
+                    role: "user",
+                    content: promptText
+                }]
+            };
+            
             fetch('https://hooks.zapier.com/hooks/catch/19713185/u4w2uc2/', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'text/plain',
+                    'Content-Type': 'application/json',
                 },
-                body: promptText
+                body: JSON.stringify(payload)
             })
             .then(response => {
                 if (response.ok) {
