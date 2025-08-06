@@ -2221,8 +2221,9 @@
         // Send to Zapier function
         function sendToZapier() {
             const promptText = document.getElementById('promptOutput').textContent;
+            const letterType = document.getElementById('letterType').value;
             
-            if (!promptText) {
+            if (!promptText || !currentClient || !letterType) {
                 alert('Please generate a prompt first');
                 return;
             }
@@ -2233,14 +2234,14 @@
             statusDiv.style.color = '#92400e';
             statusDiv.textContent = 'Sending to Zapier...';
             
+            // Simplified payload for Zapier workflow
             const payload = {
-                model: "claude-4-sonnet-20250514",
-                project_id: "0198723c-3695-77e7-abed-90cbe6e95538",
-                max_tokens: 4000,
-                messages: [{
-                    role: "user",
-                    content: promptText
-                }]
+                letterType: letterType,
+                prompt: promptText,
+                clientName: currentClient.name,
+                matterNumber: currentClient.matterNumber,
+                court: currentClient.court,
+                templateFileName: getTemplateFileName(letterType)
             };
             
             // Create form data
@@ -2269,6 +2270,17 @@
                 statusDiv.textContent = '✗ Failed to send to Zapier. Please try again.';
                 console.error('Zapier error:', error);
             });
+        }
+        
+        // Helper function to get template file name
+        function getTemplateFileName(letterType) {
+            const templateMap = {
+                'CCL': 'CCL_Template.docx',
+                'Mention': 'Mention_Template.docx',
+                'Final': 'Final_Template.docx',
+                'FeeReestimate': 'FeeReestimate_Template.docx'
+            };
+            return templateMap[letterType] || 'Template.docx';
         }
 
         // Update Excel record function
