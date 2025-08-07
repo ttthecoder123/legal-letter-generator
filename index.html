@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Legal Letter Generation System</title>
     <style>
         body {
@@ -411,6 +411,259 @@
             
             .tabs {
                 flex-wrap: wrap;
+            }
+        }
+        
+        /* Mobile-specific styles for iPhone */
+        @media (max-width: 430px) {
+            body {
+                padding: 10px;
+                font-size: 16px;
+            }
+            
+            .container {
+                padding: 0;
+            }
+            
+            .header {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .header p {
+                font-size: 14px;
+            }
+            
+            /* Tab navigation - make it a dropdown on mobile */
+            .tabs {
+                display: block;
+                position: relative;
+                background: transparent;
+                padding: 0;
+                box-shadow: none;
+            }
+            
+            .tab {
+                display: block;
+                width: 100%;
+                padding: 15px;
+                margin-bottom: 2px;
+                border-radius: 8px;
+                font-size: 16px;
+                text-align: left;
+            }
+            
+            /* Larger form elements */
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                font-size: 16px;
+                padding: 15px;
+                border-radius: 8px;
+            }
+            
+            .form-group label {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            
+            /* Checkboxes - make them larger and easier to tap */
+            .checkbox-item {
+                padding: 15px;
+                margin-bottom: 8px;
+                border-radius: 8px;
+                font-size: 16px;
+            }
+            
+            .checkbox-item input[type="checkbox"],
+            .checkbox-item input[type="radio"] {
+                width: 20px;
+                height: 20px;
+                margin-right: 12px;
+            }
+            
+            /* Buttons - full width and larger */
+            .btn {
+                width: 100%;
+                padding: 16px;
+                font-size: 16px;
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+            
+            .button-group {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            /* Table adjustments */
+            .master-table {
+                font-size: 12px;
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .master-table th,
+            .master-table td {
+                padding: 8px 4px;
+                font-size: 12px;
+            }
+            
+            /* Hide some columns on mobile */
+            .master-table th:nth-child(4),
+            .master-table td:nth-child(4),
+            .master-table th:nth-child(5),
+            .master-table td:nth-child(5) {
+                display: none;
+            }
+            
+            /* Section spacing */
+            .section {
+                margin-top: 20px;
+                padding-top: 20px;
+            }
+            
+            .section-title {
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+            
+            /* Output box */
+            .output-box {
+                font-size: 14px;
+                padding: 15px;
+                max-height: 300px;
+            }
+            
+            /* Charges section - stack vertically */
+            .charges-category {
+                margin-bottom: 15px;
+            }
+            
+            .charges-category h4 {
+                font-size: 18px;
+                margin-bottom: 12px;
+            }
+            
+            /* Info grid - single column on mobile */
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            /* Modal adjustments */
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+                margin: 20px auto;
+            }
+            
+            /* Add client button - fixed position */
+            .add-client-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 56px;
+                height: 56px;
+                font-size: 28px;
+            }
+            
+            /* Multi-select - make taller */
+            .multi-select {
+                min-height: 150px;
+                font-size: 16px;
+            }
+            
+            /* Client info box */
+            .client-info {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .client-info h3 {
+                font-size: 18px;
+            }
+            
+            /* Letter history */
+            .letter-history {
+                padding: 15px;
+                margin-top: 15px;
+            }
+            
+            /* Conditional sections */
+            .conditional {
+                margin-top: 10px;
+                padding: 12px;
+            }
+            
+            /* Analytics grid */
+            #analytics .tab-content > div:first-child {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            
+            #analytics .tab-content > div:first-child > div {
+                padding: 15px;
+            }
+            
+            #analytics .tab-content > div:first-child h3 {
+                font-size: 14px;
+            }
+            
+            #analytics .tab-content > div:first-child p {
+                font-size: 1.5em;
+            }
+            
+            /* Database status */
+            .database-status {
+                font-size: 14px;
+                padding: 12px;
+                margin-bottom: 15px;
+            }
+            
+            /* Remove hover effects on mobile */
+            .checkbox-item:hover {
+                border-color: #e5e7eb;
+                background: transparent;
+            }
+            
+            /* Tab content padding */
+            .tab-content {
+                padding: 20px;
+                border-radius: 12px;
+            }
+            
+            /* Sticky action buttons at bottom */
+            #generator .btn-primary,
+            #generator .btn-success {
+                position: fixed;
+                bottom: 20px;
+                width: calc(50% - 25px);
+                z-index: 100;
+            }
+            
+            #generator .btn-primary {
+                left: 20px;
+            }
+            
+            #generator .btn-success {
+                right: 20px;
+            }
+            
+            #generator > div:last-child {
+                padding-bottom: 80px;
+            }
+            
+            /* Zapier status */
+            #zapierStatus {
+                position: fixed;
+                bottom: 80px;
+                left: 20px;
+                right: 20px;
+                z-index: 99;
             }
         }
     </style>
